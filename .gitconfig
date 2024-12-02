@@ -1,0 +1,42 @@
+[alias]
+poke = push --force-with-lease
+sup = submodule update --init --recursive --remote --merge
+sup2 = submodule foreach --recursive git pull --rebase origin main
+sup1 = submodule update --init --recursive --rebase --remote
+merge-log = log --merges --format='%h %s'
+short-id = rev-parse --short
+diffieboi = diff --minimal --word-diff=color --word-diff-regex='([0-9@A-Za-z]+|[^0-9@A-Za-z()]+|[()])'
+is-it-in = branch --contains
+find-merge = !git --no-pager log --oneline --merges --extended-regexp --grep
+authors = shortlog -ecs
+# https://coderwall.com/p/euwpig/a-better-git-log
+pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+latest-tag = !git describe --tags $(git rev-list --tags --max-count=1)
+logf = log --format=fuller
+histtree = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%<(100,trunc)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
+[core]
+abbrev = 8
+excludesfile = ~/.config/git/ignore
+
+[commit]
+verbose = true
+
+[log]
+date = local
+
+[init]
+defaultBranch = main
+
+[pull]
+rebase = true
+
+[push]
+autoSetupRemote = true
+
+[rerere]
+enabled = 1
+
+[include]
+path = ~/.gitconfig.local
+path = ~/.gitconfig.delta
