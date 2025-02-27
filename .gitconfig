@@ -34,8 +34,21 @@ rebase = true
 [push]
 autoSetupRemote = true
 
+[rebase]
+updateRefs = true
+
 [rerere]
 enabled = 1
+autoupdate = true
+
+[tag]
+sort = version:refname
+
+[diff]
+algorithm = histogram
+colorMoved = plain
+mnemonicPrefix = true
+renames = true
 
 [include]
 path = ~/.gitconfig.local
